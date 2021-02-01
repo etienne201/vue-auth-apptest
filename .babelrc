@@ -9,11 +9,11 @@
         "@": "./",
         "@client": "./client",
         "@server": "./server",
-       // "@tests": "./__tests__"
+        "@tests": "./__tests__",
         "@store": "./client/store",
         "@pages": "./client/pages",
         "@models": "./server/models",
-        "@routes": "./server/routes",
+        "@routes": "./server/routes", 
         "@config": "./server/config",
         "@validators": "./server/validators",
         "@components": "./client/components",

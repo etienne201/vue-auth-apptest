@@ -2,27 +2,18 @@
  * @jest-environnent node
  */
 import User from '@models/User'
-import mongoose from 'mongoose'
+ import {connect, disconnect} from '@tests/utils/mongoose'
+import Response from '@tests/utils/response'
 
-import Bcrypt from 'bcryptjs'
-import jwt from 'jsonwebtoken'
-import config from '@config'
+// import Bcrypt from 'bcryptjs'
+// import jwt from 'jsonwebtoken'
+// import config from '@config'
 import authMidleware from '@middleware/auth'
 //import Response from '@tests/utils/response'
-import { string } from 'yup'
+ 
 
 
-class Response {
-    status(status){ 
-        this.status = status
-        return this
-
-    }
-
-    json(data){
-        return data
-    }
-}
+ 
 
 describe('The auth middleware model',()=>{
     const user = {
@@ -36,7 +27,7 @@ describe('The auth middleware model',()=>{
     let createUser
 
     beforeAll(async() => {
-        await mongoose.connect('mongodb://localhost:27017/auth-app_test', { useNewUrlParser: true ,useUnifiedTopology: true })
+        await connect()
 
          createUser = await User.create(user)
 
@@ -88,6 +79,6 @@ describe('The auth middleware model',()=>{
     })
 
     afterAll(async ( ) => {
-        await mongoose.connection.close()
+        await disconnect()
     })
 }); 
