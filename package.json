@@ -8,12 +8,14 @@
     "build:server": "babel server/ --out-dir dist/ --copy-files",
     "build": "npm run build:client && npm run build:server",
     "test": "jest --testEnvironment=node --verbose  --watchAll --maxWorkers=1",
+    "test:e2e":"cypress open",
     "build:client": "webpack --production",
     "start": "node dist/index.js"
   },
   "dependencies": {
     "@fullstackjs/mail": "^1.0.7",
     "axios": "^0.21.1",
+    "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.2",
@@ -46,6 +48,7 @@
     "babel-loader": "^8.0.5",
     "babel-plugin-module-resolver": "^3.2.0",
     "css-loader": "^2.1.1",
+    "cypress": "^6.4.0",
     "glob-all": "^3.1.0",
     "jest": "^25.2.2",
     "jest-serializer-vue": "^2.0.2",

@@ -1,0 +1,10 @@
+{
+   "data": {
+     "user": {
+       "name":"Freddy",
+       "email": "Freddy@gmail.com",
+       "password": "password"
+     },
+     "token":"random<>json<>web<>token"
+   }
+}

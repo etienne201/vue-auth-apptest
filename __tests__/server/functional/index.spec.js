@@ -1,6 +1,4 @@
-/**
- * @jest-environment node
- */
+
 import server from '@server/app'
 import User from '@models/User'
 import supertest from 'supertest'

@@ -7,3 +7,4 @@ export const PasswordResetSchema = new mongoose.Schema({
 })
 
 export default mongoose.model('PasswordReset', PasswordResetSchema)
+ 

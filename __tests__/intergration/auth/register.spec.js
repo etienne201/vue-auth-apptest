@@ -1,8 +1,6 @@
 /**
  * @jest-environment node
  */
- 
- 
  import User from '../../../server/models/User'
  import server from '@server/app'
  import  supertest from 'supertest'
@@ -36,7 +34,7 @@
     it('should register a new user',async()=> {
         const response = await  app().post(REGISTER_ENDPOINT).send(user)
        
-        
+         
            expect(response.status).toBe(200)
 
         expect (response.body.message).toBe('Account registered.')
@@ -44,31 +42,31 @@
         expect(response.body.data.token).toBeDefined()
     })
 
-    // it('Should return a 422 if registration fail ' , async () => {
+    it('Should return a 422 if registration fails',async() => {
 
-    //     // prepare
+        // prepare
 
-    //     const user  = await User.create(user)
+        await User.create(user)
+
+        // action
+
+        const response = await app().post(REGISTER_ENDPOINT).send(user)
+
+        console.log(user)
+
+       // assertion
+
+       expect(response.status).toBe(422)
+
+        expect(response.body.message).toBe('Validation failed.')
+
+        expect(response.body.data.errors).toEqual({
+
+            email: 'This email has already been taken.'
+        })
 
 
-    //     // action
-
-
-
-    //     const response = await app().post(REGISTER_ENDPOINT).send(user)
-
-    //     // assertion
-
-    //     //expect(response.status).toBe(422)
-
-    //     expect(response.body.message).toBe('Validation failed.')
-
-    //     expect(response.body.data.errors).toEqual({
-    //         email: 'This email has already been taken.'
-    //     })
-
-
-    //})
+    })
  
       afterAll(async() => {
          await disconnect()

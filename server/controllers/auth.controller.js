@@ -135,8 +135,8 @@ const emailConfirm = async (req, res) => {
     const user = await User.findOneAndUpdate(
         { email: req.authUser.email },
         {
-            emailConfirmCode: null,
-            emailConfirmedAt: new Date()
+             emailConfirmCode: null,
+             emailConfirmedAt: new Date()
         },
         { new: true }
     )
@@ -146,7 +146,12 @@ const emailConfirm = async (req, res) => {
     return res.json({
         message: 'Email confirmed.',
         data: {
-            user,
+             user,//: {
+
+            //     emailConfirmCode: null,
+            //     emailConfirmedAt: new Date()
+
+            // },
             token
         }
     })
